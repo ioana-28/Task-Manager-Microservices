@@ -9,15 +9,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(UsernameAlreadyExistsException.class)
-    public ResponseEntity<@NotNull ApiErrorResponse> handleUsernameAlreadyExists(UsernameAlreadyExistsException ex) {
-        return ResponseEntity.status(HttpStatus.CONFLICT)
-                .body(new ApiErrorResponse(
-                        HttpStatus.CONFLICT.value(),
-                        HttpStatus.CONFLICT.getReasonPhrase(),
-                        ex.getMessage()
-                ));
-    }
 
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ApiErrorResponse> handleResourceNotFound(ResourceNotFoundException ex) {
@@ -29,15 +20,6 @@ public class GlobalExceptionHandler {
                 ));
     }
 
-//    @ExceptionHandler(BadCredentialsException.class)
-//    public ResponseEntity<ApiErrorResponse> handleBadCredentials() {
-//        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-//                .body(new ApiErrorResponse(
-//                        HttpStatus.UNAUTHORIZED.value(),
-//                        HttpStatus.UNAUTHORIZED.getReasonPhrase(),
-//                        "Invalid username or password"
-//                ));
-//    }
 }
 
 
